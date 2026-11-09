@@ -1,12 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
+import { HealthCheck } from './api/health-check';
 
 function App() {
   const [count, setCount] = useState(0)
-
+ useEffect(() => {
+  const getHealthfunc = async() => {
+    const resp = await HealthCheck()
+    console.log(resp)
+  }
+  getHealthfunc()
+ }, [])
   return (
     <>
       <section id="center">
