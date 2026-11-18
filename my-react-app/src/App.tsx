@@ -1,22 +1,22 @@
-import { useEffect } from 'react'
-import './App.css'
+import { useEffect } from 'react';
+import './App.css';
 import { HealthCheck } from './api/health-check';
 import { Route, Routes } from 'react-router-dom';
-import Login from './pages/authentication/login';
+import CoreRoute from './routers/core.route';
 
 function App() {
- useEffect(() => {
-  const getHealthfunc = async() => {
-    const resp = await HealthCheck()
-    console.log(resp)
-  }
-  getHealthfunc()
- }, [])
+  useEffect(() => {
+    const getHealthfunc = async () => {
+      const resp = await HealthCheck();
+      console.log(resp);
+    };
+    getHealthfunc();
+  }, []);
   return (
-   <Routes>
-    <Route path='/' element={ <Login /> } />
-   </Routes>
-  )
+    <Routes>
+      <Route path="/*" element={<CoreRoute />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
